@@ -603,3 +603,127 @@ Tdef(\hu, {var suma=0;
 )
 
 s.quit
+
+
+
+a=[1, 2, 3, 4, 5]
+
+a
+
+a=[1, 2, 'tango', 4, 'ranchera']
+
+Array.geom(5, 1, 0.3)
+
+Array.fib(36)
+
+
+Array.fib(5, 7, 32)
+
+Array.rand(8, 1, 100)
+
+Array.rand2(8, 1, 100)
+
+Array.linrand(8, 1, 100)
+
+Array.exprand(8, 1, 100)
+
+
+Array.series(5, 1, 0.3).first
+Array.series(5, 1, 0.3).last
+Array.series(5, 1, 0.3).choose
+
+Array.series(10, 2, 20).wchoose([0.3, 0.02, 0.08, 0.1])
+[0.3, 0.02, 0.08, 0.1, 1].sum
+
+
+
+Array.series(5, 1, 0.3).size
+
+
+(
+a=[2, 3, 4, 14, 1000, 'si'];
+
+Tdef(\no, {var cont=0;
+	inf.do{
+		a[cont%a.size].postln;
+		cont=cont+1;
+		0.3.wait;
+	}
+}).play
+)
+
+Tdef(\no).play
+
+(
+SynthDef(\sin, {|amp=0.8|
+	var sen, env;
+	sen=Pan2.ar(SinOsc.ar(1200, 0, amp), 0, 0.9);
+	env=EnvGen.kr(Env.perc(0, 0.3), doneAction:2);
+	Out.ar(0, sen*env)
+}).send(s)
+)
+
+/*********************************/
+
+
+Synth(\sin)
+
+
+
+(
+
+a=Array.geom(15, 0.1, 1.16).pyramid;
+
+Tdef(\gi, {
+	inf.do{
+		Synth(\sin, [\amp, a.choose]);
+		0.07.wait;
+	}
+})
+)
+
+Tdef(\gi).play
+
+/*********************************/
+
+
+a=Buffer.read(s,"holabeats.wav")
+
+a.numFrames_
+
+497114
+
+(
+SynthDef(\sample, {|posc, amp=0.1|
+	var sen, env;
+	sen=PlayBuf.ar(1, a.bufnum, 1.6, Impulse.kr(1), posc)*amp;
+	env=EnvGen.kr(Env([0, 1, 1, 0], [1*0.025, 1*0.95, 1*0.025]), doneAction:2);
+	Out.ar(0, sen*env)
+}).send(s)
+)
+
+Synth(\sample)
+
+a=Array.geom(20, 50, 1.442);
+a[4]
+
+a=Array.series(10, 50, 12100).pyramid;
+a=Array.series(10, 50, 12100);
+
+(
+
+a=Array.series(10, 81050, 3220).reverse();
+b=Array.geom(15, 0.1, 1.16).reverse();
+
+Tdef(\di, {
+	var cont=0;
+	inf.do{
+		cont=cont+1;
+		Synth(\sample, [\posc, a[cont % a.size], \amp, b[cont % b.size]]);
+		0.12.wait;
+	}
+})
+
+)
+
+Tdef(\di).play;
