@@ -317,4 +317,59 @@ Routine({
     }).play;
 )
 
+a = 5;
 
+b = a * 2
+
+c = 10.5;
+
+d = 4.2;
+
+e = c + d;
+
+
+
+residuo = 15 % 4;
+
+
+"residuo =".post; residuo.postln;
+
+{
+var t;
+
+t="Hola Supercollider";
+
+t.postln;
+
+}
+
+"Hola Supercollider".postln;
+
+a=Array[60, 62, 64, 65, 67];
+a[3].postln;
+
+
+
+x=false;
+y=true;
+
+r = x or: y;
+
+
+f = 3*3*3;
+f
+
+
+
+
+
+
+
+g = 10 > 5
+
+h = "Super"+"Colider"
+h
+
+d=Dictionary[\clave1->1,\clave2->2,\clave3->3];
+
+d[\clave2].postln;
