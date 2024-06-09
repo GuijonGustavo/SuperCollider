@@ -1403,3 +1403,38 @@ p=Pbind(
 
 p.play;
 p.stop;
+
+
+
+
+{
+
+x = 5;
+
+if(x > 0, { "x es positivo".postln }, { "x es negativo o cero".postln });
+
+}
+
+
+
+
+	
+i=0;
+while {i<5}{"El valor de i es: ".post; i.postln;i = i+1;}
+
+
+e = 20;
+
+if( e < 18 ) { 
+	"Eres menor de edad".postln; 
+} else if ( e < 65) {
+ "Eres adulto".postln; 
+} else  {
+ "Eres mayor de edad".postln; 
+};
+
+ 
+
+	
+
+
