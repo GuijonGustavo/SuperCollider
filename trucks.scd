@@ -373,3 +373,8 @@ h
 d=Dictionary[\clave1->1,\clave2->2,\clave3->3];
 
 d[\clave2].postln;
+
+
+
+"Hello world"
+"Hello world".speak;
